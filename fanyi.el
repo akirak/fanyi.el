@@ -302,7 +302,7 @@
         (fanyi-mode)))
 
     ;; Create a new instance per search.
-    (let ((instances (seq-map #'clone fanyi-providers)))
+    (let ((instances (seq-map #'clone (mapcar #'symbol-value fanyi-providers))))
       (seq-do (lambda (i)
                 ;; Set the query word.
                 (fanyi-set-query-word i (downcase word))
